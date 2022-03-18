@@ -1,13 +1,11 @@
-package com.nhl.simplefileuploader.repository;
+package com.naderi.sfu.repository;
 
-import com.nhl.simplefileuploader.entity.FileBag;
+import com.naderi.sfu.entity.FileBag;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.stream.Stream;
 
 
 @Transactional

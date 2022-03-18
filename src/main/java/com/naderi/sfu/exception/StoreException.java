@@ -1,4 +1,4 @@
-package com.nhl.simplefileuploader;
+package com.naderi.sfu.exception;
 
 public class StoreException extends RuntimeException {
 

@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    data: classpath:/sql/data.sql
+    url: jdbc:h2:mem:salon
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  thymeleaf:
+    cache: false
+  mvc:
+    throw-exception-if-no-handler-found: false
+  servlet:
+    multipart:
+      max-file-size:  100MB
+      max-request-size: 10MB
+server:
+  error:
+    whitelabel:
+      enabled: false
+  compression:
+    enabled: true
+

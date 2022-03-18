@@ -1,6 +1,6 @@
-package com.nhl.simplefileuploader.service;
+package com.naderi.sfu.service;
 
-import com.nhl.simplefileuploader.entity.FileBag;
+import com.naderi.sfu.entity.FileBag;
 
 import java.util.List;
 

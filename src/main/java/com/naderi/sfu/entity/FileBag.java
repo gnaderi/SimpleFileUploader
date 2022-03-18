@@ -1,4 +1,4 @@
-package com.nhl.simplefileuploader.entity;
+package com.naderi.sfu.entity;
 
 import javax.persistence.*;
 import java.util.Date;

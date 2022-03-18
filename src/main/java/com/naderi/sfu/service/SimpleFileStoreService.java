@@ -1,7 +1,7 @@
-package com.nhl.simplefileuploader.service;
+package com.naderi.sfu.service;
 
-import com.nhl.simplefileuploader.entity.FileBag;
-import com.nhl.simplefileuploader.repository.FileCrudRepository;
+import com.naderi.sfu.repository.FileCrudRepository;
+import com.naderi.sfu.entity.FileBag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +11,12 @@ import java.util.List;
 
 @Service
 public class SimpleFileStoreService implements FileStoreService {
-    @Autowired
     private FileCrudRepository fileCrudRepository;
+
+    @Autowired
+    public SimpleFileStoreService(FileCrudRepository fileCrudRepository) {
+        this.fileCrudRepository = fileCrudRepository;
+    }
 
     @Transactional
     @Override

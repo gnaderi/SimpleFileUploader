@@ -1,10 +1,9 @@
-package com.nhl.simplefileuploader;
+package com.naderi.sfu.controller;
 
-import com.nhl.simplefileuploader.entity.FileBag;
-import com.nhl.simplefileuploader.service.FileStoreService;
+import com.naderi.sfu.entity.FileBag;
+import com.naderi.sfu.exception.StoreFileNotFoundException;
+import com.naderi.sfu.service.FileStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -18,9 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,7 +30,7 @@ public class FileUploadController {
     @GetMapping("/")
     public String listUploadedFiles(Model model) throws IOException {
         Stream<FileBag> files = fileStoreService.findAll().stream();
-        model.addAttribute("files", files.map(   path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
+        model.addAttribute("files", files.map(path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                 "loadFile", path.getFileName()).build().toString()).collect(Collectors.toList()));
         return "uploadForm";
     }
@@ -54,8 +51,7 @@ public class FileUploadController {
 
         FileBag fileBag = new FileBag(file.getOriginalFilename(), file.getContentType(), new Date(), new Date(), file.getBytes());
         FileBag savedFileBag = fileStoreService.save(fileBag);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + savedFileBag.getFileName() + "!");
+        redirectAttributes.addFlashAttribute("message", "You successfully uploaded !");
 
         return "redirect:/";
     }
